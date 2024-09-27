@@ -1,38 +1,441 @@
-.App {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  color: #333;
+}
+
+.app {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  position: relative;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 배경 이미지가 창 크기에 맞게 조정됨 */
+  z-index: -1; /* 배경이 텍스트 뒤에 위치 */
+  filter: brightness(50%);
+}
+
+.overlay {
+  padding: 50px;
+  border-radius: 10px;
+  z-index: 1;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.overlay h1 {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+
+  text-transform: uppercase;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.overlay p {
+  font-size: 1.5em;
+  margin-bottom: 50px;
+}
+
+.cta-button {
+  background-color: #538059;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, border-radius 0.3s ease;
+}
+
+.cta-button:hover {
+  border-radius: 0px;
+  background-color: #32703a;
+}
+
+/* Why Join Section */
+.about-section {
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-section h2 {
+  font-size: 2.5em;
+  color: #2c3e50;
+  margin-bottom: 50px;
+  padding: 6px;
+  padding-left: 15px;
+  border-left: 5px #538059 solid;
+}
+
+.about-description {
+  font-size: 1.2em;
+  color: #555;
+  width: 80%;
+  line-height: 30px;
+  margin-bottom: 40px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 3px solid transparent;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 350px;
+  transition: box-shadow 0.3s ease, border 0.5s ease;
+  text-align: left;
+}
+
+.card-image {
+  width: 100%;
+}
+
+.card-image img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.card h3 {
+  font-size: 1.5em;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.card p {
+  font-size: 1em;
+  color: #555;
+  line-height: 25px;
+}
+
+.icon img {
+  width: 60px;
+  height: 60px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border: 3px solid #538059;
+}
+
+/* Camp Schedule Section */
+.schedule-section {
+  background-color: #f9f7f7;
+}
+
+.schedule {
+  padding: 100px 20px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto; /* 중앙 정렬을 위한 마진 설정 */
+}
+
+.schedule-section h2 {
+  font-size: 2.8em;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  border-bottom: 3px solid #538059;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.schedule-section p {
+  font-size: 1.2em;
+  color: #7f8c8d;
+  margin-bottom: 50px;
+}
+
+.schedule-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.schedule-list li {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.schedule-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.schedule-list li strong {
+  display: block;
+  font-size: 1.5em;
+  color: #538059;
+  margin-bottom: 10px;
+}
+
+.schedule-list li span {
+  font-size: 1.2em;
+  color: #34495e;
+}
+
+/* Pricing Section */
+.pricing-section {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.pricing-section h2 {
+  font-size: 2.5em;
+  color: #2c3e50;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+  border-bottom: 3px solid #538059;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.pricing-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pricing-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.pricing-card {
+  background-color: #fff;
+  border: 2px solid #538059;
+  padding: 80px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.pricing-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background-color: #f7f7f7;
+}
+
+.pricing-card h3 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.pricing-card .price {
+  font-size: 2.5em;
+  color: #538059;
+  margin-bottom: 20px;
+  font-weight: 550;
+}
+
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.pricing-card ul li {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.signup-section {
+  padding: 60px 20px;
+  background-color: #f7f7f7;
+}
+
+.signup-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.signup-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.signup-form label {
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.signup-form input,
+.signup-form select {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.signup-form input:focus,
+.signup-form select:focus {
+  border-color: #80adff;
+  outline: none;
+}
+
+.submit-btn {
+  background-color: #80adff;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #5f96dd;
+}
+
+.footer {
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  font-size: 0.9em;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* Mobile Devices (max-width: 767px) */
+@media (max-width: 767px) {
+  .header {
+    height: 80vh;
   }
-  to {
-    transform: rotate(360deg);
+
+  .overlay {
+    padding: 30px;
+  }
+
+  .overlay h1 {
+    font-size: 2em;
+  }
+
+  .overlay p {
+    font-size: 1em;
+    margin-bottom: 30px;
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  .about-section {
+    padding: 50px 20px;
+  }
+
+  .about-section h2 {
+    font-size: 1.8em;
+  }
+
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .schedule {
+    padding: 60px 20px;
+  }
+
+  .schedule-section h2 {
+    font-size: 2em;
+  }
+
+  .schedule-list li {
+    padding: 15px;
+  }
+
+  .schedule-list li strong {
+    font-size: 1.3em;
+  }
+
+  .schedule-list li span {
+    font-size: 1em;
+  }
+
+  .pricing-section {
+    padding: 60px 20px;
+  }
+
+  .pricing-section h2 {
+    font-size: 2em;
+  }
+
+  .pricing-section h3 {
+    font-size: 1.8em;
+  }
+
+  .pricing-card .price {
+    font-size: 2.3em;
+  }
+
+  .pricing-card ul li {
+    font-size: 1.1em;
+  }
+
+  .signup-section {
+    padding: 40px 20px;
+  }
+
+  .signup-form input,
+  .signup-form select {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  .submit-btn {
+    padding: 12px 20px;
+    font-size: 1em;
   }
 }
